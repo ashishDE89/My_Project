@@ -10,26 +10,6 @@ from streamlit_lottie import st_lottie
 st.set_page_config(layout="wide")
 original_title = '<h1 style="text-align:center;font-family:Blackadder ITC; color:Orange; font-size: 40px;">Hello There!! I Am Ashish Kothapalli</h1>'
 name = '<h1 style="text-align:center;font-family:Brush Script MT; color:Blue; font-size:30px;">Welcome To My Profile</h1>'
-def load_lottieurl(url: str):
-    r = requests.get(url)
-    if r.status_code != 200:
-        return None
-    return r.json()
-
-lottie_hello = load_lottieurl("https://assets9.lottiefiles.com/packages/lf20_cxCtsKKkFK.json")
-
-st_lottie(
-    lottie_hello,
-    speed=1,
-    reverse=False,
-    loop=True,
-    quality="medium",  # medium ; high
-    height=200,
-    width=200,
-    key=None,
-)
-load_lottieurl("https://assets9.lottiefiles.com/packages/lf20_cxCtsKKkFK.json")
-
 summary_title = '<p style="text-align:left;font-family:Berlin Sans FB; color:Orange; font-size: 25px;">What`s my career like:</p>'
 toolstech = '<p style="text-align:left;font-family:Berlin Sans FB; color:Orange; font-size: 25px;">What I Use:</p>'
 experience = '<p style="text-align:left;font-family:Berlin Sans FB; color:Orange; font-size: 25px;">My Work From The Past/Current:</p>'
@@ -168,3 +148,23 @@ with about_me:
              "and love to cook, My curiosity about the world makes me adventurous so love hiking and attend social gatherings. "
              "A new found passion towards Pickle Ball pushes me hard to dive deep into learning the tricks of the game"
               "To top it all, I am avid yoga practioner")
+
+def load_lottieurl(url: str):
+    r = requests.get(url)
+    if r.status_code != 200:
+        return None
+    return r.json()
+
+lottie_hello = load_lottieurl("https://assets9.lottiefiles.com/packages/lf20_cxCtsKKkFK.json")
+
+st_lottie(
+    lottie_hello,
+    speed=1,
+    reverse=False,
+    loop=True,
+    quality="medium",  # medium ; high
+    height=200,
+    width=200,
+    key=None,
+)
+load_lottieurl("https://assets9.lottiefiles.com/packages/lf20_cxCtsKKkFK.json")
