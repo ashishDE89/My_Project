@@ -7,8 +7,6 @@ import numpy as np
 import base64
 from streamlit_lottie import st_lottie
 
-
-
 st.set_page_config(layout="wide")
 original_title = '<h1 style="text-align:center;font-family:Blackadder ITC; color:Orange; font-size: 40px;">Hello There!! I Am Ashish Kothapalli</h1>'
 name = '<h1 style="text-align:center;font-family:Brush Script MT; color:Blue; font-size:30px;">Welcome To My Profile</h1>'
@@ -25,12 +23,13 @@ st_lottie(
     speed=1,
     reverse=False,
     loop=True,
-    quality="low",  # medium ; high
+    quality="medium",  # medium ; high
     height=200,
     width=200,
     key=None,
 )
 load_lottieurl("https://assets9.lottiefiles.com/packages/lf20_cxCtsKKkFK.json")
+
 summary_title = '<p style="text-align:left;font-family:Berlin Sans FB; color:Orange; font-size: 25px;">What`s my career like:</p>'
 toolstech = '<p style="text-align:left;font-family:Berlin Sans FB; color:Orange; font-size: 25px;">What I Use:</p>'
 experience = '<p style="text-align:left;font-family:Berlin Sans FB; color:Orange; font-size: 25px;">My Work From The Past/Current:</p>'
