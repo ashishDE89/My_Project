@@ -1,7 +1,6 @@
 import json
 import requests
 import streamlit as st
-from streamlit_lottie import st_lottie
 import http.client
 from urllib.request import urlopen, Request
 import pandas as pd
