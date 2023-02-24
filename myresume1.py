@@ -1,12 +1,52 @@
 import json
 import requests
 import streamlit as st
+from pathlib import Path
 from urllib.request import urlopen, Request
 import pandas as pd
-import numpy as np
+from PIL import Image
 import base64
+from streamlit_lottie import st_lottie
 
-st.set_page_config(layout="wide")
+# --- PATH SETTINGS ---
+current_dir = Path(__file__).parent if "__file__" in locals() else Path.cwd()
+resume_file = current_dir / "AshishKothapalli(pdf).pdf"
+profile_pic = current_dir / "Passport Photo - Ashish.JPG"
+
+#--------General Settings---------
+Page_title = "Digital CV | Ashish Kothapalli"
+Page_Icon = ":wave"
+Name = "Ashish Kothapalli"
+Description = """Yoga practitioner and A Data Engineer with lot to learn"""
+Email = "in.data89@gmail.com"
+Social_Media = {
+    "LinkedIn": "https://linkedin.com",
+    "GitHub" : "https://github.com"
+}
+
+#---------Page Layout------------
+st.set_page_config(page_title=Page_title, page_icon=Page_Icon)
+
+#---------Load PDF and Profile Pic---------
+with open(resume_file, "rb") as pdf_file:
+    PDF = pdf_file.read()
+profile_pic = Image.open(profile_pic)
+
+#---------columns-----------
+col1, col2 = st.columns(2, gap="small")
+with col1:
+    st.image(profile_pic, width=230)
+with col2:
+    st.title(Name)
+    st.write(Description)
+    st.download_button(
+        label="📄 Download Resume",
+        data=PDF,
+        file_name=resume_file,
+        mime="application/octet-stream"
+    )
+    st.write("📫", EMAIL)
+
 original_title = '<h1 style="text-align:center;font-family:Blackadder ITC; color:Orange; font-size: 40px;">Hello There!! I Am Ashish Kothapalli</h1>'
 name = '<h1 style="text-align:center;font-family:Brush Script MT; color:Blue; font-size:30px;">Welcome To My Profile</h1>'
 summary_title = '<p style="text-align:left;font-family:Berlin Sans FB; color:Orange; font-size: 25px;">What`s my career like:</p>'
@@ -143,3 +183,25 @@ with about_me:
              "and love to cook, My curiosity about the world makes me adventurous so love hiking and attend social gatherings. "
              "A new found passion towards Pickle Ball pushes me hard to dive deep into learning the tricks of the game"
               "To top it all, I am avid yoga practioner")
+
+
+def load_lottieurl(url: str):
+    r = requests.get(url)
+    if r.status_code != 200:
+        return None
+    return r.json()
+
+lottie_hello = load_lottieurl("https://assets5.lottiefiles.com/packages/lf20_cxCtsKKkFK.json")
+
+st_lottie(
+    lottie_hello,
+    speed=1,
+    reverse=False,
+    loop=True,
+    quality="medium",  # medium ; high
+    height=200,
+    width=200,
+    key=None,
+)
+
+load_lottieurl("https://assets5.lottiefiles.com/packages/lf20_cxCtsKKkFK.json")
