@@ -118,7 +118,7 @@ def set_background(jpg_file):
     ''' % bin_str
     st.markdown(page_bg_img, unsafe_allow_html=True)
 
-set_background('C:/Users/priya/Downloads/gandu.jpg')
+set_background('https://github.com/ashishDE89/My_Project/blob/main/bg.jpg')
 
 st.markdown(education, unsafe_allow_html=True)
 
