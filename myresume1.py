@@ -6,7 +6,6 @@ from urllib.request import urlopen, Request
 import pandas as pd
 from PIL import Image
 import base64
-from streamlit_lottie import st_lottie
 
 # --- PATH SETTINGS ---
 current_dir = Path(__file__).parent if "__file__" in locals() else Path.cwd()
