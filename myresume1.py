@@ -100,25 +100,21 @@ elif option == 'Technical Analyst --> Feb` 17 – Sep’ 18':
 "\n :loudspeaker: Assign tasks to the team members and ensure on time resolution.\n"
 "\n :loudspeaker: Report to the sector lead on the team`s performance and deliver the daily report.\n")
 
+def add_bg_from_url():
+    st.markdown(
+         f"""
+         <style>
+         .stApp {{
+             background-image: url("https://static.vecteezy.com/system/resources/previews/000/833/530/original/black-abstract-background-with-various-corner-layers-vector.jpg");
+             background-attachment: fixed;
+             background-size: cover
+         }}
+         </style>
+         """,
+         unsafe_allow_html=True
+     )
 
-def get_base64(bin_file):
-    with open(bin_file, 'rb') as f:
-        data = f.read()
-    return base64.b64encode(data).decode()
-
-def set_background(jpg_file):
-    bin_str = get_base64(jpg_file)
-    page_bg_img = '''
-    <style>
-    .stApp {
-    background-image: url("data:image/jpg;base64,%s");
-    background-size: cover;
-    }
-    </style>
-    ''' % bin_str
-    st.markdown(page_bg_img, unsafe_allow_html=True)
-
-set_background('https://github.com/ashishDE89/My_Project/blob/main/bg.jpg')
+add_bg_from_url() 
 
 st.markdown(education, unsafe_allow_html=True)
 
