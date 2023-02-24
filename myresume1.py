@@ -5,7 +5,6 @@ from urllib.request import urlopen, Request
 import pandas as pd
 import numpy as np
 import base64
-from streamlit_lottie import st_lottie
 
 st.set_page_config(layout="wide")
 original_title = '<h1 style="text-align:center;font-family:Blackadder ITC; color:Orange; font-size: 40px;">Hello There!! I Am Ashish Kothapalli</h1>'
@@ -144,25 +143,3 @@ with about_me:
              "and love to cook, My curiosity about the world makes me adventurous so love hiking and attend social gatherings. "
              "A new found passion towards Pickle Ball pushes me hard to dive deep into learning the tricks of the game"
               "To top it all, I am avid yoga practioner")
-
-
-def load_lottieurl(url: str):
-    r = requests.get(url)
-    if r.status_code != 200:
-        return None
-    return r.json()
-
-lottie_hello = load_lottieurl("https://assets5.lottiefiles.com/packages/lf20_cxCtsKKkFK.json")
-
-st_lottie(
-    lottie_hello,
-    speed=1,
-    reverse=False,
-    loop=True,
-    quality="medium",  # medium ; high
-    height=200,
-    width=200,
-    key=None,
-)
-
-load_lottieurl("https://assets5.lottiefiles.com/packages/lf20_cxCtsKKkFK.json")
