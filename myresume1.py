@@ -1,17 +1,36 @@
 import json
 import requests
 import streamlit as st
-import http.client
 from urllib.request import urlopen, Request
 import pandas as pd
 import numpy as np
 import base64
+from streamlit_lottie import st_lottie
+
 
 
 st.set_page_config(layout="wide")
-st.snow()
 original_title = '<h1 style="text-align:center;font-family:Blackadder ITC; color:Orange; font-size: 40px;">Hello There!! I Am Ashish Kothapalli</h1>'
 name = '<h1 style="text-align:center;font-family:Brush Script MT; color:Blue; font-size:30px;">Welcome To My Profile</h1>'
+def load_lottieurl(url: str):
+    r = requests.get(url)
+    if r.status_code != 200:
+        return None
+    return r.json()
+
+lottie_hello = load_lottieurl("https://assets9.lottiefiles.com/packages/lf20_cxCtsKKkFK.json")
+
+st_lottie(
+    lottie_hello,
+    speed=1,
+    reverse=False,
+    loop=True,
+    quality="low",  # medium ; high
+    height=200,
+    width=200,
+    key=None,
+)
+load_lottieurl("https://assets9.lottiefiles.com/packages/lf20_cxCtsKKkFK.json")
 summary_title = '<p style="text-align:left;font-family:Berlin Sans FB; color:Orange; font-size: 25px;">What`s my career like:</p>'
 toolstech = '<p style="text-align:left;font-family:Berlin Sans FB; color:Orange; font-size: 25px;">What I Use:</p>'
 experience = '<p style="text-align:left;font-family:Berlin Sans FB; color:Orange; font-size: 25px;">My Work From The Past/Current:</p>'
@@ -100,21 +119,25 @@ elif option == 'Technical Analyst --> Feb` 17 – Sep’ 18':
 "\n :loudspeaker: Assign tasks to the team members and ensure on time resolution.\n"
 "\n :loudspeaker: Report to the sector lead on the team`s performance and deliver the daily report.\n")
 
-def add_bg_from_url():
-    st.markdown(
-         f"""
-         <style>
-         .stApp {{
-             background-image: url("https://static.vecteezy.com/system/resources/previews/000/833/530/original/black-abstract-background-with-various-corner-layers-vector.jpg");
-             background-attachment: fixed;
-             background-size: cover
-         }}
-         </style>
-         """,
-         unsafe_allow_html=True
-     )
 
-add_bg_from_url() 
+def get_base64(bin_file):
+    with open(bin_file, 'rb') as f:
+        data = f.read()
+    return base64.b64encode(data).decode()
+
+def set_background(jpg_file):
+    bin_str = get_base64(jpg_file)
+    page_bg_img = '''
+    <style>
+    .stApp {
+    background-image: url("data:image/jpg;base64,%s");
+    background-size: cover;
+    }
+    </style>
+    ''' % bin_str
+    st.markdown(page_bg_img, unsafe_allow_html=True)
+
+set_background('C:/Users/priya/Downloads/bg.jpg')
 
 st.markdown(education, unsafe_allow_html=True)
 
@@ -139,7 +162,7 @@ st.markdown(me,unsafe_allow_html=True)
 contact, about_me = st.tabs(["Contact Me","About Me"])
 with contact:
     st.write(":email: Email: in.data89@gmail.com \n"
-             "\n:telephone_receiver: Phone: (971) 570-7413\n"
+             "\n:telephone_receiver: Phone: +1(971) 570-7413\n"
              "\n:link:LinkedIn:    https://www.linkedin.com/in/ashish-kothapalli-4286ab265/")
 with about_me:
     st.write("I am a learning lad in this vast ocean of the data world. Besides office work, I volunteer at the local library"
