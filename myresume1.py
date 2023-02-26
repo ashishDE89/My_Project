@@ -1,51 +1,15 @@
 import json
 import requests
 import streamlit as st
-from pathlib import Path
+from streamlit_lottie import st_lottie
+import http.client
 from urllib.request import urlopen, Request
 import pandas as pd
-from PIL import Image
+import numpy as np
 import base64
 
-# --- PATH SETTINGS ---
-current_dir = Path(__file__).parent if "__file__" in locals() else Path.cwd()
-resume_file = current_dir / "AshishKothapalli(pdf).pdf"
-profile_pic = current_dir / "Passport Photo - Ashish.JPG"
 
-#--------General Settings---------
-Page_title = "Digital CV | Ashish Kothapalli"
-Page_Icon = ":wave"
-Name = "Ashish Kothapalli"
-Description = """Yoga practitioner and A Data Engineer with lot to learn"""
-Email = "in.data89@gmail.com"
-Social_Media = {
-    "LinkedIn": "https://linkedin.com",
-    "GitHub" : "https://github.com"
-}
-
-#---------Page Layout------------
-st.set_page_config(page_title=Page_title, page_icon=Page_Icon)
-
-#---------Load PDF and Profile Pic---------
-with open(resume_file, "rb") as pdf_file:
-    PDF = pdf_file.read()
-profile_pic = Image.open(profile_pic)
-
-#---------columns-----------
-col1, col2 = st.columns(2, gap="small")
-with col1:
-    st.image(profile_pic, width=230)
-with col2:
-    st.title(Name)
-    st.write(Description)
-    st.download_button(
-        label="📄 Download Resume",
-        data=PDF,
-        file_name=resume_file,
-        mime="application/octet-stream"
-    )
-    st.write("📫", EMAIL)
-
+st.set_page_config(layout="wide")
 original_title = '<h1 style="text-align:center;font-family:Blackadder ITC; color:Orange; font-size: 40px;">Hello There!! I Am Ashish Kothapalli</h1>'
 name = '<h1 style="text-align:center;font-family:Brush Script MT; color:Blue; font-size:30px;">Welcome To My Profile</h1>'
 summary_title = '<p style="text-align:left;font-family:Berlin Sans FB; color:Orange; font-size: 25px;">What`s my career like:</p>'
@@ -141,7 +105,7 @@ def add_bg_from_url():
          f"""
          <style>
          .stApp {{
-             background-image: url("https://static.vecteezy.com/system/resources/previews/000/833/530/original/black-abstract-background-with-various-corner-layers-vector.jpg");
+             background-image: url("https://i.pinimg.com/736x/2e/22/d3/2e22d3a39e75951ec10a4153f7e797dc.jpg");
              background-attachment: fixed;
              background-size: cover
          }}
@@ -175,7 +139,7 @@ st.markdown(me,unsafe_allow_html=True)
 contact, about_me = st.tabs(["Contact Me","About Me"])
 with contact:
     st.write(":email: Email: in.data89@gmail.com \n"
-             "\n:telephone_receiver: Phone: +1(971) 570-7413\n"
+             "\n:telephone_receiver: Phone: (971) 570-7413\n"
              "\n:link:LinkedIn:    https://www.linkedin.com/in/ashish-kothapalli-4286ab265/")
 with about_me:
     st.write("I am a learning lad in this vast ocean of the data world. Besides office work, I volunteer at the local library"
@@ -190,17 +154,19 @@ def load_lottieurl(url: str):
         return None
     return r.json()
 
-lottie_hello = load_lottieurl("https://assets5.lottiefiles.com/packages/lf20_cxCtsKKkFK.json")
+url = "https://assets1.lottiefiles.com/packages/lf20_cxCtsKKkFK.json"
+
+lottie_hello = load_lottieurl(url)
 
 st_lottie(
     lottie_hello,
     speed=1,
     reverse=False,
     loop=True,
-    quality="medium",  # medium ; high
+    quality="low",  # medium ; high
     height=200,
     width=200,
     key=None,
 )
 
-load_lottieurl("https://assets5.lottiefiles.com/packages/lf20_cxCtsKKkFK.json")
+load_lottieurl(url)
